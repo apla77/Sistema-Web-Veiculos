@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!--  <link rel="stylesheet" type="text/css" th:href="@{/css/material-dashboard.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/demo/demo.css}"/> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/fonts/iconic/css/material-design-iconic-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/animate/animate.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/css-hamburgers/hamburgers.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/animsition/css/animsition.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/vendor/daterangepicker/daterangepicker.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/css/main.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/template-login/css/util.css}"/>
+<title>Cadastro SWV DSC</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+</head> 
+<body style="background-color: #999999;">
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="login100-more" style="background-image: url('../template-login/images/carroLogin2.jpg');"></div>
+
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+				
+					<span class="login100-form-title p-b-59">
+						<center>SWV</center>
+					</span>
+				<div class="container" id="cadastro">
+	        
+	        	<div th:replace="fragments/alert"></div>
+	        
+	            <form th:action="${usuario.id == null} ? @{/user/salvar} : @{/user/editar}" 
+	                  th:object="${usuario}" method="POST">
+
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Primeiro Nome</span>
+						<input type="text" class="form-control" id="nome" placeholder="Nome"
+	                               autofocus="autofocus" th:field="*{nome}" required/>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="SegundoNome is required">
+						<span class="label-input100">Segundo Nome</span>
+						<input type="text" class="form-control" id="segundoNome" placeholder="Segundo Nome"
+	                               autofocus="autofocus" th:field="*{sobrenome}" required/>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<span class="label-input100">Email</span>
+						<input type="email" class="form-control" id="email" placeholder="E-Mail"
+	                               autofocus="autofocus" th:field="*{email}" required/>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<span class="label-input100">Password</span>
+						<input type="password" class="form-control" id="senha" placeholder="Senha"
+	                               autofocus="autofocus" th:field="*{senha}" required/>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Confirma Password is required">
+						<span class="label-input100">Confirma Password</span>
+						<input type="password" class="form-control" id="confirmarSenha" placeholder="Confirmar Senha"
+	                               autofocus="autofocus" required/>
+						<span class="focus-input100"></span>
+					</div>
+
+					<input type="hidden" id="id" th:field="*{id}"/>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="submit" class="login100-form-btn">
+								Sign Up
+							</button>
+						</div>
+					</div>
+					
+				</form>
+				 <script type="text/javascript">
+	            	var senha = document.getElementById("senha")
+	            		,confirmarSenha = document.getElementById("confirmarSenha");
+
+	          		function validatePassword(){
+	            		if(senha.value != confirmarSenha.value) {
+	            			confirmarSenha.setCustomValidity("Senhas diferentes!");
+	            		} else {
+	            			confirmarSenha.setCustomValidity('');
+	            		}
+	          		}
+
+	          		senha.onchange = validatePassword;
+	          		confirmarSenha.onkeyup = validatePassword;
+	            </script>  
+			</div>
+		</div>
+	</div> 
+</body>
+</html>
