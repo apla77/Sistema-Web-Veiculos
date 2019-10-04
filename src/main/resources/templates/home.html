@@ -4,8 +4,7 @@
 <meta charset="UTF-8" />
 
 </head>
-<body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	<section class="layout-content" layout:fragment="corpo">
 
 		<div class="site-wrap" id="home-section">
@@ -23,20 +22,21 @@
 
 				<div class="container">
 					<div class="row align-items-center position-relative">
-
 						<div class="col-4 ">
 							<div class="site-logo">
 								<a href="#">Sistema Web Veículo</a>
 							</div>
 						</div>
-
+						<div class="navbar-wrapper">
+            <a class="navbar-brand" href="#pablo"  sec:authentication="name"></a>
+          </div>
 							<nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
 								<ul class="site-menu main-menu js-clone-nav ml-auto ">
 									<li class="active"><a href="user/trocar_senha.html" class="nav-link2">Home</a></li>
-									<li class="active"><a th:href="@{/veiculos/cadastrar}">Serviços</a></li>
+									<li class="active"><a th:href="@{/veiculo/cadastrar}">Serviços</a></li>
 									<li><a href="#" class="nav-link">Carros</a></li>
 									<li><a href="#" class="nav-link">About</a></li>
-									<li class="active"><a href="index.html" class="nav-link">Login</a></li>
+									<li class="active"><a href="login.html" class="nav-link">Login</a></li>
 								</ul>
 							</nav>
 						</div>

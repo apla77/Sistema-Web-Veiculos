@@ -1,4 +1,4 @@
-package br.com.ifrn.swv.controller;
+	package br.com.ifrn.swv.controller;
 
 import javax.validation.Valid;
 
@@ -22,7 +22,7 @@ public class VeiculoController {
 	@Autowired
 	private VeiculoService veiculoService;
 			
-	@RequestMapping(method=RequestMethod.GET, path ={"/cadastrar"})
+	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar(Veiculo veiculo) {
 		ModelAndView mv = new ModelAndView("veiculo/cadastro");
 		mv.addObject("veiculo", veiculo);
