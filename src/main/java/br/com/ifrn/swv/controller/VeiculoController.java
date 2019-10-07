@@ -35,7 +35,6 @@ public class VeiculoController {
 		if(result.hasErrors()) {
 			return cadastrar(veiculo);
 	    }
-
 		veiculoService.cadastrar(veiculo);
 		ModelAndView rec = findAll(); 
 		return rec;
