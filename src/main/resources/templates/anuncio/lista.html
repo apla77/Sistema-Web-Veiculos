@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<body>
+	<section layout:fragment="corpo">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="navbar-wrapper header">
+					<br /> <br />
+				</div>
+				<div class="row">
+					<div class="col-md-10">
+						<div class="card">
+							<div class="card-header card-header-primary">
+								<h4 class="card-title">Lista de Anuncios</h4>
+								<h1 id="exibir-teste"></h1>
+							</div>
+							<div class="card-body">
+								<div th:replace="fragments/alert"></div>
+
+								<div class="table-responsive">
+									<table class="table table-striped table-hover table-sm">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Data</th>
+												<th>Modelo</th>
+												<th>Ano</th>
+												<th>Valor</th>
+												<th>Ação</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="a : ${anuncio}">
+												<td th:text="${a.id}">3</td>
+												<td th:text="${a.dataAnucio}">Ford</td>
+										        <td th:text="${a.veiculo.modelo}">Ford</td>
+										 		<td th:text="${a.veiculo.anoModelo}">F1000</td> 
+												<td th:text="${a.precoVeiculo}">20.000,00</td> 
+												<td colspan="2"><a class="btn btn-info btn-sm"
+													th:href="@{/anuncio/editar/{id} (id=${a.id}) }"
+													role="button"> <span class="oi oi-brush" title="Editar"
+														aria-hidden="true"></span>
+												</a>
+													<button th:id="${ 'btn_anuncio/excluir/' + a.id}"
+														type="button" class="btn btn-danger btn-sm"
+														data-toggle="modal" data-target="#myModal">
+														<span class="oi oi-circle-x" title="Exclusão desabilitada"
+															aria-hidden="true"></span>
+													</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

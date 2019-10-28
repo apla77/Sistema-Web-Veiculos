@@ -27,6 +27,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
+                                             <!--   <th>Data</th>  --> 
                                                 <th>Marca</th>
                                                 <th>Modelo</th>
                                                 <th>Ano</th>
@@ -38,6 +39,7 @@
                                         <tbody>
                                             <tr th:each="v : ${veiculo}">
                                                 <td th:text="${v.id}">3</td>
+                                          <!--    <td th:text="${v.data}">Ford</td> -->    
                                                 <td th:text="${v.marca}">Ford</td>
                                                 <td th:text="${v.modelo}">F1000</td>
                                                 <td th:text="${v.anoModelo}">2004</td>

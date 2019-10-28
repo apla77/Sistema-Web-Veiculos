@@ -20,6 +20,7 @@ public class Veiculo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String data;
 	private String valor;            // "R$ 92.799,00"
 	private String marca;             // "VW - VolksWagen"
 	private String modelo;           // "AMAROK High.CD 2.0 16V TDI 4x4 Dies. Aut"
@@ -38,6 +39,19 @@ public class Veiculo implements Serializable{
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getData() {
+		return data;
+	}
+	public void setData(String calibragemveiculo) {
+		this.data = calibragemveiculo;
+	}
+	public Anuncio getAnuncio() {
+		return anuncio;
+	}
+	public void setAnuncio(Anuncio anuncio) {
+		this.anuncio = anuncio;
 	}
 	public String getValor() {
 		return valor;

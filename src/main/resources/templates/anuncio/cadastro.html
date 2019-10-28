@@ -1,102 +1,116 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout}">
-<head><meta charset="UTF-8"/></head> 
+<head>
+<meta charset="UTF-8" />
+</head>
+
 <body>
-	    <section layout:fragment="corpo">
-	          <div class="content">
-        <div class="container-fluid">
-          <div class="navbar-wrapper header">
-          	<br />
-          	<br />
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Cadastro de Usuario</h4>
-                </div>
-                <div class="card-body">
-                 <div th:replace="fragments/alert"></div>
-	        
-	            <form th:action="@{/usuario/salvar}" 
-	                  th:object="${usuario}" method="POST">
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="nome">Nome</label>
-	                        <input type="text" class="form-control" id="nome"
-	                               autofocus="autofocus" th:field="*{nome}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="sobrenome">Sobrenome</label>
-	                        <input type="text" class="form-control" id="sobrenome" 
-	                               autofocus="autofocus" th:field="*{sobrenome}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>
-	                     <div class="form-group col-md-6">
-	                        <label for="rua">Rua</label>
-	                        <input type="text" class="form-control" id="rua"
-	                               autofocus="autofocus" th:field="*{rua}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div> 
- 						
-	                    <div class="form-group col-md-6">
-	                        <label for="bairro">Bairro</label>
-	                        <input type="text" class="form-control" id="bairro" 
-	                               autofocus="autofocus" th:field="*{bairro}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>
-	                    <div class="form-group col-md-6">
-	                        <label for="municipio">Cidade</label>
-	                        <input type="text" class="form-control" id="municipio"
-	                               autofocus="autofocus" th:field="*{municipio}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>	
-	                    <div class="form-group col-md-6">
-	                        <label for="cep">CEP</label>
-	                        <input type="text" class="form-control" id="municipio"
-	                               autofocus="autofocus" th:field="*{cep}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>	
-	                    <div class="form-group col-md-6">
-	                        <label for="email">E-Mail</label>
-	                        <input type="email" class="form-control" id="email" 
-	                               autofocus="autofocus" th:field="*{email}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>
-	                    <div class="form-group col-md-3">
-	                        <label for="senha">Senha</label> 
-	                        <input type="password" class="form-control" id="senha" 
-	                               autofocus="autofocus" th:field="*{senha}" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div>
-	                    
-	                    <div class="form-group col-md-3">
-	                        <label for="confirmarSenha">Confirmar Senha</label> 
-	                        <input type="password" class="form-control" id="confirmarSenha" 
-	                               autofocus="autofocus" required/>
-	                        <div class="invalid-feedback"></div>
-	                    </div> 
-	            </div>
-	                <input type="hidden" id="id" th:field="*{id}"/>
-	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-	            </form>
-                </div>
-              </div>
-              <div class="navbar-wrapper header">
-          	<a class="btn btn-primary" th:href="@{/usuario/cadastrar}">
-               		<i class="oi oi-caret-right"></i>
-                   	<span>Cadastrar Usuários</span> 
-   		        </a>
-            <a class="btn btn-primary" href="/usuario/lista" >
-                <span class="oi oi-spreadsheet" aria-hidden="true"></span>
-                <span>Listar Usuarios</span>
-            </a>
-          </div>
-            </div>
-          </div>
-        </div>
-      </div>
-	    </section>
+	<section layout:fragment="corpo">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="navbar-wrapper header">
+					<br /> <br />
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header card-header-primary">
+								<h4 class="card-title">Cadastro de anuncio</h4>
+							</div>
+							<div class="card-body">
+								<div th:replace="fragments/alert"></div>
+
+								<form enctype="multipart/form-data"
+									th:action="@{/anuncio/salvar}" th:object="${anuncio}"
+									method="POST">
+									<input type="hidden" th:field="*{veiculo.id}"
+										th:value="*{veiculo.id}" />
+									<div class="form-group row">
+										<div class="col-md-8">
+											<label for="nome">Veículo</label>
+											<div th:text="${anuncio.veiculo.modelo}"></div>
+											<div class="invalid-feedback"></div>
+										</div>
+										<div class="col-md-4">
+											<label for="nome">Ano</label>
+											<div th:text="${anuncio.veiculo.anoModelo}"></div>
+											<div class="invalid-feedback"></div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label for="precoVeiculo">Preço Veículo</label> <input
+												type="text" class="form-control" id="precoVeiculo"
+												autofocus="autofocus" th:field="*{precoVeiculo}" required />
+											<div class="invalid-feedback"></div>
+										</div>
+
+										<div class="col-md-6">
+											<label for="cep">Quilometragem</label> <input type="text"
+												class="form-control" id="cep" autofocus="autofocus"
+												th:field="*{quilometragem}" required />
+											<div class="invalid-feedback"></div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-4">
+											<label class="checkbox-inline"> <input
+												type="checkbox" name="habito1" value="Sim"
+												th:field="*{direcao}" />&nbsp;Direção Elétrica
+											</label>
+										</div>
+										<div class="col-sm-4">
+											<label class="checkbox-inline"> <input
+												type="checkbox" name="habito1" value="Sim"
+												th:field="*{arCondicionado}" />&nbsp;Ar Condicionado
+											</label>
+										</div>
+										<div class="col-sm-4">
+											<label class="checkbox-inline"> <input
+												type="checkbox" name="habito1" value="Sim"
+												th:field="*{trioEletrico}" />&nbsp;Ar Condicionado
+											</label>
+										</div>
+
+									</div>
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label for="cep">CEP</label> <input type="text"
+												class="form-control" id="cep" autofocus="autofocus"
+												th:field="*{cep}" required />
+											<div class="invalid-feedback"></div>
+										</div>
+										<div class="col-md-3">
+											<label class="custom-file-label" for="customFile">Imagem</label>
+											<div class="custom-file"
+												th:classappend="${#fields.hasErrors('imagem')}? 'has-error'">
+												<input type="file" class="custom-file-input" id="customFile"
+													name="file" />
+											</div>
+										</div>
+									</div>
+
+									<input type="hidden" id="id" th:field="*{id}" />
+
+									<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script>
+		// Add the following code if you want the name of the file appear on select
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
+	</script>
 </body>
 </html>

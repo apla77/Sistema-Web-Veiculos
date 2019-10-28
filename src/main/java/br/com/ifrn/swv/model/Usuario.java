@@ -27,7 +27,7 @@ import br.com.ifrn.swv.model.Anuncio;
 @Entity
 public class Usuario implements UserDetails {
  
-	private static final long serialVersionUID = 1L; // estava comentada
+	private static final long serialVersionUID = 1L; 
 	
 	public Usuario() {
 		this.dataCriacao = Calendar.getInstance().getTime();
@@ -289,5 +289,14 @@ public class Usuario implements UserDetails {
 			}
 		}
 		return txt;
-}
+	}
+	
+	public void setEndereco(Endereco endereco) {
+		this.setCep(endereco.getCep());
+		this.setRua(endereco.getLogradouro());
+		this.setMunicipio(endereco.getLocalidade());
+		this.setBairro(endereco.getBairro());
+		this.setUf(endereco.getUf());
+	}
+	
 }

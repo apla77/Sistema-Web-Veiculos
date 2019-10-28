@@ -25,6 +25,10 @@ public class AnuncioService {
 	public Anuncio findOne(Long id) {
         return repository.getOne(id);
     }
+	
+	public Anuncio findOneUsuario(Long id) {
+        return repository.findOneUsuario(id);
+    }
      
     public Anuncio save(Anuncio anuncio) {
         return repository.saveAndFlush(anuncio);

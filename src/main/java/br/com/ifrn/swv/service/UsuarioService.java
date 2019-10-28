@@ -20,8 +20,7 @@ import br.com.ifrn.swv.model.Usuario;
 import br.com.ifrn.swv.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService implements UserDetailsService{
-	 
+public class UsuarioService implements UserDetailsService{	 
 	@Autowired
 	private UsuarioRepository repository;
 	@Autowired
@@ -32,7 +31,7 @@ public class UsuarioService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails user = repository.findByEmail(username);
 		org.springframework.security.core.userdetails.User userFinal = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getPermissoes(user));
-		System.out.println(userFinal.getAuthorities());
+
 		return userFinal;
 	}
 	

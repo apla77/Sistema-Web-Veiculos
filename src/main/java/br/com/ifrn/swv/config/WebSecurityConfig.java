@@ -30,6 +30,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers("https://**").hasAnyAuthority("ADMINISTRADOR", "CLIENTE")
 				.antMatchers("/veiculo/**").hasAnyAuthority("ADMINISTRADOR", "CLIENTE")
 				.antMatchers("/user/**").hasAnyAuthority("ADMINISTRADOR")
+				.antMatchers("/api/**").hasAnyAuthority("ADMINISTRADOR", "CLIENTE")
 				.antMatchers("layout").permitAll()
 				.antMatchers("/images/**").permitAll()
 				.antMatchers("/static/**").permitAll()
@@ -42,6 +43,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 				.antMatchers("/user/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/user/salvar").permitAll()
 				.antMatchers(HttpMethod.GET, "/login").permitAll()
+				.antMatchers(HttpMethod.GET, "/api").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/veiculo").permitAll()
 				.antMatchers(HttpMethod.GET, "/webjars/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/home").hasAnyAuthority("CLIENTE", "ADMINISTRADOR")
 				.antMatchers(HttpMethod.GET, "/").permitAll()
@@ -62,7 +65,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 		  auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	  }
 	 
-	@Bean
+  @Bean
   public PasswordEncoder passwordEncoder() {
       return new BCryptPasswordEncoder();
   }
@@ -71,5 +74,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**",  "/distribuition/**", "/fonts/**", "/vendor/**", "/img/**",  "/js/**",  "/scss/**", "/h2/**");
 		web.ignoring().antMatchers("/layout", "http::/**", "https::/**", "/http::/**", "/https::/**", "/template-login/**");
+  
+ }
+ 
 }
-}
+

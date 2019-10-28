@@ -1,0 +1,74 @@
+	<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<body>
+	<section layout:fragment="corpo">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="navbar-wrapper header">
+					<br /> <br /> 
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header card-header-primary">
+							<h5><span th:text="${anuncio.usuario.email}"></span></h5>
+							<!--  	<h4 class="card-title">Lista de Anuncios</h4> -->
+								<h1 id="exibir-teste"></h1>
+							</div> 
+							<div class="card-body">
+								<div th:replace="fragments/alert"></div>
+								
+								<div class="form-group row">
+								    <div class="col-md-5">
+									<label for="quilometragem">Ano</label>
+										
+									</div>
+									<div class="col-md-5">
+									<label for="quilometragem">Quilometragem</label>
+										<span th:text="${anuncio.quilometragem}"></span><span></span>
+									
+									</div>
+									<div class="col-md-5">
+									<label for="trioEletrico">Direção Elẽtrica:</label>
+										<span th:text="${anuncio.direcao}"></span><span></span>
+									</div>
+									<div class="col-md-5">
+									<label for="trioEletrico">Ar Condicionado:</label>
+										<span th:text="${anuncio.arCondicionado}"></span><span></span>
+									</div>
+									<div class="col-md-5">
+									<label for="trioEletrico">Trio Eletrico:</label>
+										<span th:text="${anuncio.trioEletrico}"></span><span></span>
+									</div>
+									<div class="col-md-5">
+									<label for="municipio">Cidade:</label>
+										<span th:text="${anuncio.usuario.municipio}"></span><span></span>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+						  <div class="col-md-6">
+						<div class="card">
+
+								<div class="form-group row">
+									<div class="col-md-6">
+									<img height="320px" width="210px" th:src="@{/anuncio/imagem/{id}(id=${anuncio.id})}"/>
+								</div>							
+							</div>
+							 		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

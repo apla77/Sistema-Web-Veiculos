@@ -10,7 +10,7 @@ import br.com.ifrn.swv.model.Usuario;
 import br.com.ifrn.swv.service.RoleService;
 import br.com.ifrn.swv.service.UsuarioService;
 
-
+ 
 @Component
 public class Inicializador implements ApplicationListener<ContextRefreshedEvent>{
 	@Autowired
