@@ -25,6 +25,7 @@
 									method="POST">
 									<input type="hidden" th:field="*{veiculo.id}"
 										th:value="*{veiculo.id}" />
+								<div class="card-body">
 									<div class="form-group row">
 										<div class="col-md-8">
 											<label for="nome">Veículo</label>
@@ -37,15 +38,22 @@
 											<div class="invalid-feedback"></div>
 										</div>
 									</div>
+								</div>
 									<div class="form-group row">
-										<div class="col-md-6">
+										<div class="col-md-7">
+											<label for="precoVeiculo">Telefone:</label> <input
+												type="text" class="form-control" id="telefone"
+												autofocus="autofocus" th:field="*{telefone}" required />
+											<div class="invalid-feedback"></div>
+										</div>
+										<div class="col-md-7">
 											<label for="precoVeiculo">Preço Veículo</label> <input
 												type="text" class="form-control" id="precoVeiculo"
 												autofocus="autofocus" th:field="*{precoVeiculo}" required />
 											<div class="invalid-feedback"></div>
 										</div>
 
-										<div class="col-md-6">
+										<div class="col-md-7">
 											<label for="cep">Quilometragem</label> <input type="text"
 												class="form-control" id="cep" autofocus="autofocus"
 												th:field="*{quilometragem}" required />
@@ -53,34 +61,35 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<div class="col-sm-4">
+										<div class="col-sm-7">
 											<label class="checkbox-inline"> <input
 												type="checkbox" name="habito1" value="Sim"
-												th:field="*{direcao}" />&nbsp;Direção Elétrica
+												th:field="*{direcao}" />&nbsp;Direção Elétrica ou Hidraulica
 											</label>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-7">
 											<label class="checkbox-inline"> <input
 												type="checkbox" name="habito1" value="Sim"
 												th:field="*{arCondicionado}" />&nbsp;Ar Condicionado
 											</label>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-7">
 											<label class="checkbox-inline"> <input
 												type="checkbox" name="habito1" value="Sim"
-												th:field="*{trioEletrico}" />&nbsp;Ar Condicionado
+												th:field="*{trioEletrico}" />&nbsp;Trio Elétrico
 											</label>
 										</div>
 
 									</div>
 									<div class="form-group row">
-										<div class="col-md-6">
+										<div class="col-md-7">
 											<label for="cep">CEP</label> <input type="text"
 												class="form-control" id="cep" autofocus="autofocus"
 												th:field="*{cep}" required />
 											<div class="invalid-feedback"></div>
 										</div>
-										<div class="col-md-3">
+										<div class="card-body">
+										<div class="col-md-6">
 											<label class="custom-file-label" for="customFile">Imagem</label>
 											<div class="custom-file"
 												th:classappend="${#fields.hasErrors('imagem')}? 'has-error'">
@@ -88,6 +97,7 @@
 													name="file" />
 											</div>
 										</div>
+									</div>
 									</div>
 
 									<input type="hidden" id="id" th:field="*{id}" />

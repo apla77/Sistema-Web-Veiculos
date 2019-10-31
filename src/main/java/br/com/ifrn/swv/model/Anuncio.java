@@ -34,6 +34,7 @@ public class Anuncio implements Serializable{
 	private String dataAnucio;
     private String precoVeiculo;
     private String cep;
+    private String telefone;
     private String quilometragem;
     private String direcao;
     private String arCondicionado;
@@ -57,6 +58,13 @@ public class Anuncio implements Serializable{
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	public Long getId() {
 		return id;

@@ -23,9 +23,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.ifrn.swv.model.Anuncio;
 import br.com.ifrn.swv.model.Usuario;
+import br.com.ifrn.swv.model.Veiculo;
 import br.com.ifrn.swv.service.AnuncioService;
 import br.com.ifrn.swv.service.SessionService;
 import br.com.ifrn.swv.service.UsuarioService;
+import br.com.ifrn.swv.service.VeiculoService;
 
 
 @Controller
@@ -34,6 +36,9 @@ public class AnuncioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private VeiculoService veiculoService;
 	
 	@Autowired
 	private AnuncioService anuncioService;
@@ -52,6 +57,7 @@ public class AnuncioController {
     public ModelAndView salvar(@Valid Anuncio anuncio, @RequestParam("file")MultipartFile file, BindingResult result) throws IOException {
 		 Usuario usuarioSession = serviceSession.getSession("usuario");
 		 Usuario usuario = usuarioService.getOne(usuarioSession.getId());
+		 Veiculo veiculo = veiculoService.findOne(anuncio.getVeiculo().getId());
 		
 		if(result.hasErrors()) {
 			return cadastrar(anuncio);
@@ -66,6 +72,7 @@ public class AnuncioController {
 		ViaCEPClient cep = new ViaCEPClient();
 		usuario.setEndereco(cep.buscaEnderecoPor(anuncio.getCep()));
 		anuncio.setUsuario(usuario);
+		anuncio.setVeiculo(veiculo);
 		anuncioService.cadastrar(anuncio);
 		//ModelAndView rec = findAll(); 
 		
